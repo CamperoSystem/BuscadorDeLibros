@@ -1,50 +1,134 @@
-# Welcome to your Expo app 👋
+# 📚 BookFinder & AudioBooks App  
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicación móvil desarrollada en **React Native (Expo)** que permite:  
 
-## Get started
+- 🔍 Buscar libros con la **Google Books API**.  
+- 🎧 Explorar y reproducir **audiolibros** desde la **API de LibriVox**.  
+- 📖 Visualizar detalles completos de cada libro o audiolibro.  
+- ⭐ Guardar favoritos localmente con **AsyncStorage**.  
 
-1. Install dependencies
+La app combina la búsqueda de libros con un **reproductor estilo Spotify** para audiolibros, ofreciendo una experiencia completa de lectura y escucha.  
 
-   ```bash
-   npm install
-   ```
 
-2. Start the app
+## ✨ Características principales  
 
-   ```bash
-   npx expo start
-   ```
+### 📚 Libros
+- 🔍 Búsqueda de libros en línea con **Google Books API**.  
+- 📖 Resultados con título, autor y portada.  
+- 📑 Pantalla de detalles con descripción, editorial, fecha de publicación y más.  
+- ⭐ Guardar y consultar **libros favoritos** de manera local.  
 
-In the output, you'll find options to open the app in a
+### 🎧 Audiolibros
+- 🎶 Catálogo de audiolibros en español desde **LibriVox API**.  
+- 📀 Modal tipo Spotify con portada, título y autor.  
+- ▶️ Controles de reproducción (play/pause, barra de progreso).  
+- ⏱️ Visualización del tiempo transcurrido y duración.  
+- ⭐ Guardado de audiolibros favoritos.  
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🚀 Tecnologías utilizadas  
 
-## Get a fresh project
+- **React Native (Expo)**  
+- **Google Books API** (búsqueda de libros)  
+- **LibriVox API** (audiolibros gratuitos)  
+- **React Navigation** (navegación fluida)  
+- **expo-av** (reproducción de audio)  
+- **AsyncStorage** (persistencia local)  
+- **html-entities** (decodificación de texto)  
+- **react-native-community/slider** (barra de progreso de audio)  
 
-When you're ready, run:
 
-```bash
-npm run reset-project
-```
+## 📷 Capturas de Pantalla  
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+🔍 **Pantalla de búsqueda de libros**  
+Resultados con título, autor y portada. 
 
-## Learn more
+<img width="247" height="544" alt="image" src="https://github.com/user-attachments/assets/80eca204-1465-465f-adec-996e17078c35" />
 
-To learn more about developing your project with Expo, look at the following resources:
+📖 **Detalle de libro**  
+Información completa: descripción, fecha, editorial, etc. 
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+<img width="249" height="548" alt="image" src="https://github.com/user-attachments/assets/316085c0-0a32-4fe7-8a4b-8bd739bec492" />
 
-## Join the community
 
-Join our community of developers creating universal apps.
+⭐ **Favoritos**  
+Lista de libros y audiolibros guardados localmente.  
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+<img width="248" height="549" alt="image" src="https://github.com/user-attachments/assets/6ad45d2b-2c26-4408-a99a-2bfe87eb832a" />
+
+
+🎧 **Reproductor estilo Spotify**  
+Modal con portada, controles de reproducción y barra de progreso.  
+
+
+<img width="251" height="546" alt="image" src="https://github.com/user-attachments/assets/74151246-3b17-4160-9c0c-95606f4a94c6" />
+
+
+<img width="248" height="550" alt="image" src="https://github.com/user-attachments/assets/00cd83fc-cbe2-4de6-b58d-e6312b683bb3" />
+
+
+
+## ⚙️ Instalación y ejecución  
+
+1. Clonar el repositorio:  
+
+   git clone https://github.com/tu-usuario/bookfinder-app.git
+   cd bookfinder-app
+Instalar dependencias:
+npm install
+
+Instalar librerías adicionales:
+
+expo install expo-av
+npm install @react-native-community/slider
+npm install html-entities
+
+Ejecutar la app:
+npx expo start -c
+
+📡 Funcionamiento técnico
+🔍 Libros (Google Books API)
+
+Se realiza la búsqueda con fetch a la API:
+
+https://www.googleapis.com/books/v1/volumes?q=harry+potter
+Se renderizan resultados en una FlatList.
+
+Al seleccionar un libro, se muestran sus detalles en otra pantalla.
+
+Los favoritos se guardan con AsyncStorage.
+
+🎧 Audiolibros (LibriVox API)
+
+Se obtienen audiolibros en español desde:
+
+https://librivox.org/api/feed/audiobooks?format=json&language=Spanish&limit=20
+Cada audiolibro abre un modal tipo Spotify con portada, título y autor.
+
+Se controla la reproducción con expo-av:
+
+playAsync() → Reproducir
+
+pauseAsync() → Pausar
+
+setPositionAsync() → Mover barra de progreso
+
+El progreso se visualiza con @react-native-community/slider.
+
+📌 Próximas mejoras
+
+✅ Filtros por categoría o idioma en libros y audiolibros.
+
+✅ Opción de eliminar favoritos.
+
+✅ Reproducción en segundo plano y controles desde la notificación.
+
+✅ Playlist personalizadas.
+
+✅ Tema oscuro/claro con toggle.
+
+👨‍💻 Autor
+Desarrollado por Antoni Campero 🚀
+
+
+
