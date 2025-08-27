@@ -1,4 +1,4 @@
-# 📚 BookFinder & AudioBooks App  
+# 📚 buscador de libros & Audio libros App  
 
 Aplicación móvil desarrollada en **React Native (Expo)** que permite:  
 
